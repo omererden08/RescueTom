@@ -17,14 +17,14 @@ public class FuelManager : MonoBehaviour
 
     private void Update()
     {
-        DecreaseFuel();
+         DecreaseFuel();       
     }
 
     void DecreaseFuel()
     {
         if(fuelBar.fillAmount != 0)
         {
-            fuelBar.fillAmount -= 0.1f * Time.deltaTime;
+            fuelBar.fillAmount -= 0.03f * Time.deltaTime;
         }
         else if(fuelBar.fillAmount < 0)
         {
@@ -35,7 +35,7 @@ public class FuelManager : MonoBehaviour
     {
         if(fuelBar.fillAmount != 0 && fuelBar.fillAmount != 1)
         {
-           fuelBar.fillAmount += 0.1f;
+           fuelBar.fillAmount += 0.15f;
         }
     }
 

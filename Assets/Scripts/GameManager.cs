@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneTransition.instance.isEntered = false;
-        SceneTransition.instance.StartScreenTransition();
+        SceneTransition.instance.StartColorChange();
         loadlevel = LoadLevel(1);
         StartCoroutine(loadlevel);
     }

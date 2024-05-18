@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using static System.TimeZoneInfo;
 
 public class TextWriter : MonoBehaviour
 {
-    
     public TextMeshProUGUI textComponent;
     public string[] lines;
+    public float startDelay;
     private float textSpeed = 0.07f;
     private int index;
     public bool endText;
@@ -26,14 +29,16 @@ public class TextWriter : MonoBehaviour
     }
 
     private void Start()
-    {
+    {           
         textComponent.text = string.Empty;
-        StartDialogue();
+        endText = false;
+        Invoke("StartDialogue", startDelay);
     }
+    
     void StartDialogue()
     {
         index = 0;
-        StartCoroutine(TypeLine());
+        StartCoroutine(TypeLine());       
     }
     IEnumerator TypeLine()
     {
@@ -52,9 +57,8 @@ public class TextWriter : MonoBehaviour
             StartCoroutine(TypeLine());
         }
         else
-        {
-            gameObject.SetActive(false);
-            endText = true;
+        {           
+            SceneTransition.instance.isEntered = false;
         }
     }
     private void Update()
@@ -68,7 +72,7 @@ public class TextWriter : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = lines[index];          
             }
         }
     }
