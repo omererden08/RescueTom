@@ -57,7 +57,7 @@ public class TextWriter : MonoBehaviour
             StartCoroutine(TypeLine());
         }
         else
-        {           
+        {
             SceneTransition.instance.isEntered = false;
         }
     }
@@ -72,7 +72,8 @@ public class TextWriter : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];          
+                textComponent.text = lines[index];
+                SceneTransition.instance.StartColorChange();
             }
         }
     }

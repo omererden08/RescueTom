@@ -11,7 +11,6 @@ public class SceneTransition : MonoBehaviour
     public Image image;
     private IEnumerator screentransition;
     public bool isEntered;
-    public bool isExited;
     [SerializeField]
     private float transitionTime;
     public static SceneTransition instance { get; private set; }
@@ -31,42 +30,39 @@ public class SceneTransition : MonoBehaviour
     {
         color = image.color;
         isEntered = true;
+        Time.timeScale = 1f;
         StartColorChange();
     }
     public void StartColorChange()
     {
         screentransition = ColorChange();
         StartCoroutine(screentransition);
-        Debug.Log("özkan");
     }
     public void StartSceneLoad()
     {
         StartCoroutine(SceneLoad(SceneManager.GetActiveScene().buildIndex + 1));
     }
-    private void FixedUpdate()
+    private void Update()
     {
-        if(!isEntered && image.color.a == 255f)
+        StartColorChange();
+        if(!isEntered)
         {
-            Invoke("StartSceneLoad", 0.5f);
+            StartSceneLoad();
         }
-
     }
     IEnumerator ColorChange()
-    {
-        while (true)
-        {
-            yield return new WaitForFixedUpdate();
-            if (isEntered == true)
+    {  
+            yield return null;
+            if (isEntered && color.a > 0)
             {
-                color.a -= 0.7f * Time.fixedDeltaTime;
+                color.a -= 1f * Time.deltaTime;
                 image.color = color;               
             }
-            else if (isEntered == false)
+            else if (!isEntered)
             {
-                color.a += 0.7f * Time.fixedDeltaTime;
-                image.color = color;              
-            }
-        }
+                color.a += 1f * Time.deltaTime;   
+                image.color = color;         
+            }                 
     }
     IEnumerator SceneLoad(int levelIndex)
     {

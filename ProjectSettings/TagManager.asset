@@ -7,6 +7,7 @@ TagManager:
   - Obstacle
   - Fuel
   - Wall
+  - End
   layers:
   - Default
   - TransparentFX

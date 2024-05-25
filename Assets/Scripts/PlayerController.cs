@@ -1,31 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRb;
+    public GameObject[] PauseMenu;
+    public GameObject Endimage;
     private Animator animator;
     private Vector2 move;
     private float horizontalInput;
     private float verticalInput;
     public float speed;
-    private bool isRight = true;
+    private bool isRight;
+    public bool isPaused;
+    public bool isGameOver;
+    public GameObject[] endGame;
+    public static PlayerController instance;
 
     private void Start()
     {
         playerRb = GetComponent<Rigidbody2D>(); 
         animator = GetComponent<Animator>();
+        isRight = true;
+        isPaused = false;
+        isGameOver = false;     
     }
-
-    private void FixedUpdate()
+    public void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-                
-        move = new Vector2(horizontalInput, verticalInput);
-        playerRb.velocity = move * speed * Time.fixedDeltaTime;
-        MoveAnimation();
+        if (!isGameOver)
+        {
+            horizontalInput = Input.GetAxisRaw("Horizontal");
+            verticalInput = Input.GetAxisRaw("Vertical");
+            move = new Vector2(horizontalInput, verticalInput);
+            playerRb.velocity = move * speed * Time.fixedDeltaTime;
+            MoveAnimation();
+            PauseGame();
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -33,7 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             HealthManager.health -= 1;
         }
-        if (collision.gameObject.CompareTag("Wall"))
+        else if (collision.gameObject.CompareTag("Wall"))
         {
             HealthManager.health -= 1;
         }
@@ -44,9 +56,13 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Fuel"))
         {
             FuelManager.instance.IncreaseFuel();
-            Destroy(other.gameObject);
-          
-        }       
+            Destroy(other.gameObject);         
+        }
+        else if (other.CompareTag("End"))
+        {
+            Endimage.SetActive(true);
+            SceneTransition.instance.isEntered = false;           
+        }
     }
     void MoveAnimation()
 {
@@ -107,5 +123,25 @@ public class PlayerController : MonoBehaviour
             break;
     }
 }
-
+    private void PauseGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+        {
+            Time.timeScale = 0f;
+            isPaused = true;
+            PauseMenu[0].SetActive(true);
+            PauseMenu[1].SetActive(true);   
+            Cursor.visible = true;
+            Debug.Log("pause");
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+        {
+            Time.timeScale = 1f;
+            isPaused = false;
+            PauseMenu[0].SetActive(false);
+            PauseMenu[1].SetActive(false);           
+            Cursor.visible = false;
+            Debug.Log("resume");
+        }
+    }
 }

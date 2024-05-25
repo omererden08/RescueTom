@@ -10,6 +10,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject[] ObstaclePrefabs;
     [SerializeField]
     private GameObject WallPrefabs;
+    [SerializeField]
+    private GameObject Tom;
     public Transform Player;
     [SerializeField]
     private float distanceBetweenFuelSpawnPoints;
@@ -18,16 +20,26 @@ public class SpawnManager : MonoBehaviour
     private float nextFuelSpawnPoint = 2f;
     private float nextObstacleSpawnPoint = 0f;
     private float nextWallSpawnPoint = 0f;
+    public bool EndGame = false;
+    IEnumerator endGame;
 
-
-
-
+    private void Start()
+    {
+        EndGame = false;
+        endGame = EndOfGame();
+        StartCoroutine(endGame);
+    }
     private void Update()
     {
-        SpawnFuel();
         WallSpawn();
-        SpawnObstacle();
-     
+
+        if (!EndGame)
+        {
+            SpawnFuel();
+            
+            SpawnObstacle();
+        }
+            
     }
 
     Vector2 RandomFuelPos()
@@ -81,4 +93,12 @@ public class SpawnManager : MonoBehaviour
             nextWallSpawnPoint += 10f;
         }
     }
+    IEnumerator EndOfGame()
+    {
+        yield return new WaitForSeconds(10f);
+        EndGame = true;
+        Instantiate(Tom, new Vector2(0, Player.transform.position.y - 15), Quaternion.identity);
+        
+    }
+
 }
