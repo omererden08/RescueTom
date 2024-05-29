@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private bool isRight;
     public bool isPaused;
     public bool isGameOver;
+    public GameObject Controls;
     public GameObject[] endGame;
     [SerializeField]
     private float speed;
@@ -219,6 +220,7 @@ public class PlayerController : MonoBehaviour
         if (playerRb.velocity.x != 0 && !moveSound.isPlaying && !isPaused && !isGameOver || playerRb.velocity.y != 0 && !moveSound.isPlaying && !isPaused && !isGameOver)
         {
             moveSound.Play();
+            Controls.gameObject.SetActive(false);
             print("5");
         }
 

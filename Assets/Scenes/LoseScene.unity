@@ -882,6 +882,7 @@ MonoBehaviour:
   Endimage: {fileID: 0}
   isPaused: 0
   isGameOver: 0
+  Controls: {fileID: 0}
   endGame:
   - {fileID: 0}
   - {fileID: 0}
@@ -1968,6 +1969,7 @@ MonoBehaviour:
   backgroundSound: {fileID: 0}
   fuelSound: {fileID: 0}
   buttonSound: {fileID: 761337637}
+  music: {fileID: 0}
   transition: {fileID: 1036554554}
 --- !u!4 &2060227214
 Transform:

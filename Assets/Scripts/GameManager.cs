@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    IEnumerator loadlevel;
     public float transitionTime;
     public bool menu;
     public bool restart;
@@ -36,7 +35,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         image.gameObject.SetActive(true);
         transition.isEntered = false;
-        Invoke("Application.Quit", 1f);
+        Application.Quit();
 
     }
 
@@ -59,14 +58,9 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         Debug.Log("menu");
     }
-    IEnumerator LoadLevel(int levelIndex)
-    {
-        yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(levelIndex);
-    }
     private void Destroy()
     {
-        image.SetActive(false);
+        image.gameObject.SetActive(false);
     }
 
 }
