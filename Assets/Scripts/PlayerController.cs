@@ -104,7 +104,11 @@ public class PlayerController : MonoBehaviour
             
             manager.collisionSound.Play();
         }
-
+        else if (collision.gameObject.CompareTag("End"))
+        {
+            Endimage.SetActive(true);
+            transition.isEntered = false;
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -114,11 +118,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);  
             manager.fuelSound.Play();
         }
-        else if (other.CompareTag("End"))
-        {
-            Endimage.SetActive(true);
-            transition.isEntered = false;           
-        }
+        
     }
     void MoveAnimation()
     {

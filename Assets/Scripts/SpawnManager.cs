@@ -95,9 +95,9 @@ public class SpawnManager : MonoBehaviour
     }
     IEnumerator EndOfGame()
     {
-        yield return new WaitForSeconds(100f);
+        yield return new WaitForSeconds(5f);
         EndGame = true;
-        Instantiate(Tom, new Vector2(0, Player.transform.position.y - 30), Quaternion.identity);
+        Instantiate(Tom, new Vector2(0, Player.transform.position.y - 15), Quaternion.identity);
         
     }
 
