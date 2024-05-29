@@ -13,19 +13,11 @@ public class SceneTransition : MonoBehaviour
     public bool isEntered;
     [SerializeField]
     private float transitionTime;
-    public static SceneTransition instance { get; private set; }
+    public GameManager manager;
+    public PlayerController player;
+    
 
-    private void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-        }
-    }
+    
     private void Start()
     {
         color = image.color;
@@ -40,7 +32,22 @@ public class SceneTransition : MonoBehaviour
     }
     public void StartSceneLoad()
     {
-        StartCoroutine(SceneLoad(SceneManager.GetActiveScene().buildIndex + 1));
+        if (manager.menu)
+        {
+            StartCoroutine(SceneLoad(0));
+        }
+        else if (manager.restart)
+        {
+            StartCoroutine(SceneLoad(2));
+        }
+        else if (player.isGameOver)
+        {
+            StartCoroutine(SceneLoad(5));
+        }
+        else
+        {
+            StartCoroutine(SceneLoad(SceneManager.GetActiveScene().buildIndex + 1));
+        }
     }
     private void Update()
     {

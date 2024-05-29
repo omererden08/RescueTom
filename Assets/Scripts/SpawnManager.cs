@@ -17,7 +17,7 @@ public class SpawnManager : MonoBehaviour
     private float distanceBetweenFuelSpawnPoints;
     [SerializeField]
     private float distanceBetweenObstacleSpawnPoints;
-    private float nextFuelSpawnPoint = 2f;
+    private float nextFuelSpawnPoint = 0f;
     private float nextObstacleSpawnPoint = 0f;
     private float nextWallSpawnPoint = 0f;
     public bool EndGame = false;
@@ -45,7 +45,7 @@ public class SpawnManager : MonoBehaviour
     Vector2 RandomFuelPos()
     {
         float x = Random.Range(-5, 5);
-        float y = Player.transform.position.y - 8;
+        float y = Player.transform.position.y - 13f;
         Vector2 spawnPos = new Vector2(x, y);
         return spawnPos;
     } 
@@ -53,7 +53,7 @@ public class SpawnManager : MonoBehaviour
     Vector2 RandomObstaclePos()
     {
         float x = 0f;
-        float y = Player.transform.position.y - 8;
+        float y = Player.transform.position.y - 10;
         Vector2 spawnPos = new Vector2(x, y);
         return spawnPos;
     }
@@ -61,7 +61,7 @@ public class SpawnManager : MonoBehaviour
     Vector2 WallSpawnPos()
     {
         float x = 0;
-        float y = Player.transform.position.y - 10f;
+        float y = Player.transform.position.y - 14.7f;
         Vector2 spawnPos = new Vector2(x, y);
         return spawnPos;
     }
@@ -90,14 +90,14 @@ public class SpawnManager : MonoBehaviour
         if(Vector2.Distance(transform.position, Player.position) >= nextWallSpawnPoint)
         {
             Instantiate(WallPrefabs, WallSpawnPos(), Quaternion.identity);
-            nextWallSpawnPoint += 10f;
+            nextWallSpawnPoint += 13f;
         }
     }
     IEnumerator EndOfGame()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(100f);
         EndGame = true;
-        Instantiate(Tom, new Vector2(0, Player.transform.position.y - 15), Quaternion.identity);
+        Instantiate(Tom, new Vector2(0, Player.transform.position.y - 30), Quaternion.identity);
         
     }
 

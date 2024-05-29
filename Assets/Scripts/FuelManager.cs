@@ -29,17 +29,14 @@ public class FuelManager : MonoBehaviour
         else if(fuelBar.fillAmount == 0)
         {
             fuelBar.fillAmount = 0;
-            Time.timeScale = 0;
             playerController.isGameOver = true;
-            playerController.endGame[0].SetActive(true);
-            playerController.endGame[1].SetActive(true);
         }
     }
     public void IncreaseFuel()
     {
         if(fuelBar.fillAmount != 0 && fuelBar.fillAmount != 1)
         {
-           fuelBar.fillAmount += 0.15f;
+           fuelBar.fillAmount += 0.25f;
         }
     }
 

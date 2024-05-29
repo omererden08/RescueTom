@@ -8,9 +8,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     IEnumerator loadlevel;
-    public float transitionTime;  
+    public float transitionTime;
+    public bool menu;
+    public bool restart;
     public GameObject image;
-    
+    public AudioSource collisionSound;
+    public AudioSource backgroundSound;
+    public AudioSource fuelSound;
+    public AudioSource buttonSound;
+    public SceneTransition transition;
 
     private void Start()
     {
@@ -19,32 +25,37 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        buttonSound.Play();
         Time.timeScale = 1f;
         image.gameObject.SetActive(true);
-        SceneTransition.instance.isEntered = false;
-        SceneTransition.instance.StartColorChange();
-        loadlevel = LoadLevel(1);
-        StartCoroutine(loadlevel);
+        transition.isEntered = false;
     }
     public void QuitGame()
     {
+        buttonSound.Play();
         Time.timeScale = 1f;
         image.gameObject.SetActive(true);
-        Application.Quit();
+        transition.isEntered = false;
+        Invoke("Application.Quit", 1f);
+
     }
 
     public void RestartGame()
     {
+        buttonSound.Play();
         Time.timeScale = 1f;
-        SceneManager.LoadScene(2);
+        transition.isEntered = false;
+        image.gameObject.SetActive(true);
+        restart = true;
     }
 
     public void ReturnMenu()
     {
+        buttonSound.Play();
         Time.timeScale = 1f;
+        menu = true;
         image.gameObject.SetActive(true);
-        SceneTransition.instance.isEntered = false;
-        SceneManager.LoadScene(0);
+        transition.isEntered = false;
         Cursor.visible = true;
         Debug.Log("menu");
     }
@@ -57,4 +68,5 @@ public class GameManager : MonoBehaviour
     {
         image.SetActive(false);
     }
+
 }

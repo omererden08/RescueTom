@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4be20606cb07ba4c8fe41139de87cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPos: {fileID: 0}
 --- !u!70 &6831196421353225790
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -80,8 +81,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.798716, y: 0.97419786}
-  m_Size: {x: 10.286653, y: 2.741214}
+  m_Offset: {x: 4.7365413, y: 0.9703119}
+  m_Size: {x: 10.411002, y: 2.8267047}
   m_Direction: 1
 --- !u!70 &4606528770953081618
 CapsuleCollider2D:
@@ -115,8 +116,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -8.448998, y: 0.9966554}
-  m_Size: {x: 3.8445473, y: 2.7751338}
+  m_Offset: {x: -8.394596, y: 1.0005401}
+  m_Size: {x: 3.9533525, y: 2.9383438}
   m_Direction: 1
 --- !u!1 &6588160590670339718
 GameObject:

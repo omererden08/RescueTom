@@ -14,20 +14,7 @@ public class TextWriter : MonoBehaviour
     private float textSpeed = 0.07f;
     private int index;
     public bool endText;
-
-    public static TextWriter Instance { get; private set; }
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-
+    public SceneTransition transition;
     private void Start()
     {           
         textComponent.text = string.Empty;
@@ -58,7 +45,7 @@ public class TextWriter : MonoBehaviour
         }
         else
         {
-            SceneTransition.instance.isEntered = false;
+            transition.isEntered = false;
         }
     }
     private void Update()
@@ -73,7 +60,7 @@ public class TextWriter : MonoBehaviour
             {
                 StopAllCoroutines();
                 textComponent.text = lines[index];
-                SceneTransition.instance.StartColorChange();
+                transition.StartColorChange();
             }
         }
     }

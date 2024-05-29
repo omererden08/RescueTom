@@ -18,7 +18,7 @@ public class Destroy : MonoBehaviour
 
     void DestroyPrefabs()
     {
-        if(transform.position.y > playerPos.transform.position.y + 10)
+        if(transform.position.y > playerPos.transform.position.y + 20)
         {
             Destroy(gameObject);
         }          
