@@ -2207,7 +2207,7 @@ MonoBehaviour:
   - {fileID: 3774174812276621463, guid: fef5300f30bf3a6488b706e8ac8ddc27, type: 3}
   - {fileID: 1079860975560213129, guid: a563ca02d3e6f3142a84ec6e436c9289, type: 3}
   WallPrefabs: {fileID: 711106709159247334, guid: a8fb3e5b2bf5c424cbc59fdd6ad0121e, type: 3}
-  Tom: {fileID: 4328280354987853755, guid: 7c199d9b98113e243b35ef5350f12060, type: 3}
+  Tom: {fileID: 2912527197057052750, guid: 7c199d9b98113e243b35ef5350f12060, type: 3}
   Player: {fileID: 1216753496}
   distanceBetweenFuelSpawnPoints: 30
   distanceBetweenObstacleSpawnPoints: 10
