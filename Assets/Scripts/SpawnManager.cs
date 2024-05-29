@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject fuelPrefab;
     [SerializeField]
     private GameObject[] ObstaclePrefabs;
+    [SerializeField]
+    private GameObject[] Fishes;
     [SerializeField]
     private GameObject WallPrefabs;
     [SerializeField]
@@ -38,6 +41,7 @@ public class SpawnManager : MonoBehaviour
             SpawnFuel();
             
             SpawnObstacle();
+
         }
             
     }
@@ -65,7 +69,6 @@ public class SpawnManager : MonoBehaviour
         Vector2 spawnPos = new Vector2(x, y);
         return spawnPos;
     }
-
     void SpawnFuel()
     {
         if (Vector2.Distance(transform.position, Player.position) >= nextFuelSpawnPoint)
@@ -93,9 +96,10 @@ public class SpawnManager : MonoBehaviour
             nextWallSpawnPoint += 13f;
         }
     }
+
     IEnumerator EndOfGame()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(100f);
         EndGame = true;
         Instantiate(Tom, new Vector2(0, Player.transform.position.y - 15), Quaternion.identity);
         

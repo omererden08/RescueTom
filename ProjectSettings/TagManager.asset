@@ -8,6 +8,8 @@ TagManager:
   - Fuel
   - Wall
   - End
+  - FishRight
+  - FishLeft
   layers:
   - Default
   - TransparentFX
