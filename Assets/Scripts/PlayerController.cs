@@ -32,6 +32,11 @@ public class PlayerController : MonoBehaviour
     public GameManager manager;
     public SceneTransition transition;
 
+    private void Awake()
+    {
+        Cursor.visible = false;
+    }
+
     private void Start()
     {
         playerRb = GetComponent<Rigidbody2D>(); 
@@ -58,6 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             transition.isEntered = false;
             transition.image.gameObject.SetActive(true);
+            Cursor.visible = true;
         }
     }
     public void FixedUpdate()

@@ -35,14 +35,17 @@ public class SceneTransition : MonoBehaviour
         if (manager.menu)
         {
             StartCoroutine(SceneLoad(0));
+            Cursor.visible = true;
         }
         else if (manager.restart)
         {
             StartCoroutine(SceneLoad(2));
+            Cursor.visible = true;
         }
         else if (player.isGameOver)
         {
             StartCoroutine(SceneLoad(5));
+            Cursor.visible = true;
         }
         else
         {

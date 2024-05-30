@@ -10,13 +10,11 @@ public class FishSpawn : MonoBehaviour
     private GameObject[] FishLeft;
     [SerializeField]
     private Transform Player;
-    private float randomTime;
 
     private void Start()
-    {
-        randomTime = Random.Range(0, 4f);
-        InvokeRepeating("SpawnRight", 4f, randomTime);
-        InvokeRepeating("SpawnLeft", 4f, randomTime);
+    {  
+        InvokeRepeating("SpawnRight", 4f, 3f);
+        InvokeRepeating("SpawnLeft", 4f, 4f);
     }
 
     private void Update()

@@ -28,15 +28,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         image.gameObject.SetActive(true);
         transition.isEntered = false;
+        Cursor.visible = false;
     }
     public void QuitGame()
     {
-        buttonSound.Play();
-        Time.timeScale = 1f;
-        image.gameObject.SetActive(true);
-        transition.isEntered = false;
         Application.Quit();
-
     }
 
     public void RestartGame()
