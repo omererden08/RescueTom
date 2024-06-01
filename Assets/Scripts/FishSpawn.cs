@@ -13,8 +13,8 @@ public class FishSpawn : MonoBehaviour
 
     private void Start()
     {  
-        InvokeRepeating("SpawnRight", 4f, 3f);
-        InvokeRepeating("SpawnLeft", 4f, 4f);
+        InvokeRepeating("SpawnRight", 4f, 2f);
+        InvokeRepeating("SpawnLeft", 4f, 3f);
     }
 
     private void Update()
@@ -28,7 +28,7 @@ public class FishSpawn : MonoBehaviour
     Vector2 RightSpawnPos()
     {
         float x = transform.position.x + 10f;
-        float y = transform.position.y - 2f;
+        float y = transform.position.y - Random.Range(4f, 8f);
         
     
         Vector2 RandomPos = new Vector2(x, y);
@@ -37,7 +37,7 @@ public class FishSpawn : MonoBehaviour
     Vector2 LeftSpawnPos()
     {
         float x = transform.position.x - 10f;
-        float y = transform.position.y - 3.5f;
+        float y = transform.position.y - Random.Range(5f, 10f);
 
 
         Vector2 RandomPos = new Vector2(x, y);

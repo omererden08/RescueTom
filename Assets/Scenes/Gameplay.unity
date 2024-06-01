@@ -1479,7 +1479,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1240147540}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
+        m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1974,19 +1974,19 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 100
+  m_UseAutoMass: 1
+  m_Mass: 2.1326523
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a99e1064b8786934caba97a9cf2dc0be, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -2073,12 +2073,12 @@ PolygonCollider2D:
       - {x: -0.69785017, y: 0.096183054}
       - {x: -0.6942363, y: 0.3483675}
       - {x: -0.6039577, y: 0.34572104}
-      - {x: -0.60216284, y: -0.0038053095}
-      - {x: -0.44814372, y: -0.00235656}
-      - {x: -0.34241226, y: 0.1482546}
-      - {x: -0.2029961, y: 0.1455042}
-      - {x: -0.20421049, y: 0.10146053}
-      - {x: -0.05517579, y: 0.09931251}
+      - {x: -0.60549694, y: 0.044538822}
+      - {x: -0.46148002, y: 0.04265349}
+      - {x: -0.38044134, y: 0.042605463}
+      - {x: -0.30088216, y: 0.043277018}
+      - {x: -0.20421049, y: 0.044781204}
+      - {x: -0.1521769, y: 0.04360598}
       - {x: -0.055047914, y: 0.0478227}
       - {x: 0.6812492, y: 0.046885304}
       - {x: 1.0028977, y: 0.046863653}
@@ -2126,9 +2126,9 @@ MonoBehaviour:
   - {fileID: 6436368}
   - {fileID: 9574272}
   speed: 0
-  maxSpeed: 150
-  acceleration: 100
-  deceleration: 100
+  maxSpeed: 3
+  acceleration: 1
+  deceleration: 1
   manager: {fileID: 1240147540}
   transition: {fileID: 838858046}
 --- !u!82 &1216753500
@@ -3021,7 +3021,7 @@ Transform:
   m_GameObject: {fileID: 1926841373}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.08981822}
+  m_LocalPosition: {x: 0, y: -1.92, z: -0.08981822}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

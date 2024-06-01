@@ -700,7 +700,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1575168891}
   lines:
-  - Thank you, Eren Boz
+  - I owe you my life.
+  - Appreciate that, buddy.
+  - Thanks
   startDelay: 2
   endText: 0
   transition: {fileID: 1160082431}

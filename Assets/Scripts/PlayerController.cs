@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
         {          
             move = new Vector2(horizontalInput, verticalInput);
 
-            playerRb.velocity = move * speed * Time.fixedDeltaTime;
+            playerRb.AddForce(move * speed);
             
             MoveAnimation();
             
@@ -125,7 +125,6 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);  
             manager.fuelSound.Play();
         }
-        
     }
     void MoveAnimation()
     {

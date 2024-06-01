@@ -65,7 +65,7 @@ public class SpawnManager : MonoBehaviour
     Vector2 WallSpawnPos()
     {
         float x = 0;
-        float y = Player.transform.position.y - 14.7f;
+        float y = Player.transform.position.y - 14.6f;
         Vector2 spawnPos = new Vector2(x, y);
         return spawnPos;
     }
